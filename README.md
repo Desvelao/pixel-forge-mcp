@@ -83,6 +83,7 @@ Colors are `#rrggbb`, a palette index like `p6`, or `clear`. Semi-transparency i
 - [Usage](docs/usage.md): workflow, tools, Pixelorama and other editors
 - [Configuration](docs/configuration.md): env vars, mounts, importing PNGs
 - [Development](docs/development.md): run from source, tests, CI, releasing
+- [Changelog](CHANGELOG.md)
 
 ## Development quick start
 

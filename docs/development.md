@@ -66,7 +66,8 @@ Outputs: `image`, `digest`, `version`.
 ## Releasing
 
 1. Make sure `main` is green.
-2. Tag and push:
+2. Move the `[Unreleased]` entries in `CHANGELOG.md` under a new `## [X.Y.Z] - date` heading and commit.
+3. Tag and push:
 
 ```bash
 git tag v0.1.0
