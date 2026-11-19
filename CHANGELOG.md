@@ -22,6 +22,7 @@ First release.
 - `install.sh` installer (`curl | sh`) with `--register`, `--scaffold`, `--bin-dir`, `--version` and `--uninstall`.
 - `pixel-art` Claude Code skill and `STYLE_GUIDE.template.md`.
 - Documentation in `docs/` (installation, usage, configuration, development).
+- MIT license.
 
 [Unreleased]: https://github.com/Desvelao/pixel-forge-mcp/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/Desvelao/pixel-forge-mcp/releases/tag/v0.1.0

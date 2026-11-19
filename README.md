@@ -91,3 +91,7 @@ Colors are `#rrggbb`, a palette index like `p6`, or `clear`. Semi-transparency i
 pip install -r requirements.txt
 python test_smoke.py
 ```
+
+## License
+
+[MIT](LICENSE)

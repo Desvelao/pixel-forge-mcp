@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 LABEL org.opencontainers.image.source="https://github.com/Desvelao/pixel-forge-mcp" \
       org.opencontainers.image.description="pixel-forge: stdio MCP server for making pixel art with Claude Code" \
-      org.opencontainers.image.licenses="NOASSERTION"
+      org.opencontainers.image.licenses="MIT"
 
 # HOME=/tmp so any UID passed with `docker run -u UID:GID` works without a home dir.
 ENV PYTHONUNBUFFERED=1 \
