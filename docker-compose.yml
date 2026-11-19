@@ -1,0 +1,24 @@
+# pixel-forge-mcp is a stdio MCP server: the client starts it on demand with
+#   docker compose run --rm -T pixel-forge
+# (`docker compose up` is not useful; there is no port or daemon mode).
+#
+# Uses the published image by default. To build from source instead:
+#   docker compose build
+services:
+  pixel-forge:
+    image: ghcr.io/desvelao/pixel-forge-mcp:${PIXEL_FORGE_TAG:-latest}
+    build:
+      context: .
+    stdin_open: true
+    tty: false
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      PIXEL_FORGE_DIR: /work
+      PIXEL_FORGE_EXPORT: /export
+    volumes:
+      # Bind mounts (not named volumes) so edits made in Pixelorama are seen
+      # by the server's mtime-based live reload.
+      - ${WORK_DIR:-./pixel-work}:/work
+      - ${EXPORT_DIR:-./export}:/export
+      # Optional: folder to import PNGs from with load_png
+      # - ${IMPORT_DIR:-./import}:/import:ro

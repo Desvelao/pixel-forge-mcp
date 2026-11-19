@@ -1,0 +1,6 @@
+pixel-work/
+export/
+__pycache__/
+*.pyc
+.venv/
+*.zip

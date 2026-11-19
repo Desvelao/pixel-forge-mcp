@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  check-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate semver tag
+        run: |
+          echo "$GITHUB_REF_NAME" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$' \
+            || { echo "Tag '$GITHUB_REF_NAME' is not semver (vX.Y.Z[-pre])"; exit 1; }
+
+  docker:
+    needs: check-tag
+    uses: ./.github/workflows/docker-build.yml
+    with:
+      push: true
+      tag: ${{ github.ref_name }}
+    permissions:
+      contents: read
+      packages: write
+
+  release:
+    needs: docker
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          IMAGE: ${{ needs.docker.outputs.image }}
+          DIGEST: ${{ needs.docker.outputs.digest }}
+        run: |
+          cat > notes.md <<NOTES
+          ## Install
+
+          \`\`\`bash
+          curl -fsSL https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${TAG}/install.sh | PIXEL_FORGE_VERSION=${TAG} sh
+          \`\`\`
+
+          Or pull the image directly:
+
+          \`\`\`bash
+          docker pull ${IMAGE}:${TAG}
+          \`\`\`
+
+          Image digest: \`${DIGEST}\`
+          NOTES
+
+          flags=""
+          case "$TAG" in *-*) flags="--prerelease" ;; esac
+
+          gh release create "$TAG" $flags \
+            --title "$TAG" \
+            --generate-notes \
+            --notes-file notes.md \
+            install.sh \
+            docker-compose.yml \
+            .claude/skills/pixel-art/SKILL.md \
+            STYLE_GUIDE.template.md

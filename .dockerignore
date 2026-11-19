@@ -1,0 +1,12 @@
+.claude
+.git
+.github
+docs
+*.md
+*.zip
+install.sh
+docker-compose.yml
+pixel-work
+export
+__pycache__
+*.pyc
