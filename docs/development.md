@@ -87,3 +87,9 @@ First release only: after the first push, set the GHCR package visibility to **p
 `install.sh` is POSIX `sh`, wrapped in `main()` so a truncated download never runs partially. Lint it with
 `shellcheck install.sh`. To test without publishing, stub `docker pull` and run it with `--bin-dir` pointing at
 a temp folder.
+
+## License and contributions
+
+The project is MIT licensed ([LICENSE](../LICENSE)). By submitting a contribution you agree to license it under the
+same terms. The Docker image carries the `org.opencontainers.image.licenses=MIT` label (set in the `Dockerfile`),
+so keep it in sync if the license ever changes.

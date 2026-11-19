@@ -10,9 +10,14 @@ Pixelorama or any other editor.
 | [Usage](usage.md) | The workflow with Claude, the 27 tools, using Pixelorama and other editors |
 | [Configuration](configuration.md) | Environment variables, mounted folders, container paths, importing PNGs |
 | [Development](development.md) | Running from source, tests, building the image, CI and releasing |
+| [License](../LICENSE) | MIT |
 
 Quick start:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Desvelao/pixel-forge-mcp/main/install.sh | sh -s -- --register --scaffold
 ```
+
+## License
+
+pixel-forge-mcp is released under the [MIT License](../LICENSE). See also the [changelog](../CHANGELOG.md).

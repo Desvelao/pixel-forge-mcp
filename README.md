@@ -94,4 +94,4 @@ python test_smoke.py
 
 ## License
 
-[MIT](LICENSE)
+Released under the [MIT License](LICENSE). The Docker image is labeled `org.opencontainers.image.licenses=MIT`.
